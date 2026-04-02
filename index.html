@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รถมือสอง | คัดสรรมาเพื่อคุณ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f0e8;
+    --cream: #f5f0e8;
+    --red: #c8102e;
+    --red-dark: #8f0b1f;
+    --gold: #c9963a;
+    --gold-light: #f0c060;
+    --gray: #2a2a2a;
+    --gray-mid: #555;
+    --gray-light: #888;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans Thai', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ========== HEADER ========== */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 64px;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    color: var(--white);
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .logo-dot {
+    width: 8px; height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .header-contact {
+    display: flex; gap: 1.5rem; align-items: center;
+  }
+
+  .header-contact a {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+
+  .header-contact a:hover { color: var(--gold-light); }
+
+  .fb-btn {
+    background: #1877f2;
+    color: white !important;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.78rem !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background 0.2s !important;
+  }
+
+  .fb-btn:hover { background: #1565d8 !important; color: white !important; }
+
+  /* ========== HERO ========== */
+  .hero {
+    padding: 5rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(200,16,46,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(200,16,46,0.3);
+    padding: 4px 14px;
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    letter-spacing: 6px;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+
+  .hero h1 span { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--gray-light);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  /* ========== SEARCH/FILTER ========== */
+  .filter-bar {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    display: flex; flex-wrap: wrap; gap: 10px;
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .filter-bar input,
+  .filter-bar select {
+    background: var(--gray);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+    height: 44px;
+  }
+
+  .filter-bar input { flex: 1; min-width: 200px; }
+
+  .filter-bar input::placeholder { color: var(--gray-light); }
+
+  .filter-bar input:focus,
+  .filter-bar select:focus { border-color: var(--gold); }
+
+  .filter-bar select option { background: var(--gray); color: var(--white); }
+
+  .filter-clear {
+    background: transparent;
+    border: 1px solid rgba(200,16,46,0.4);
+    color: var(--red);
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 44px;
+    white-space: nowrap;
+  }
+
+  .filter-clear:hover { background: rgba(200,16,46,0.1); }
+
+  /* ========== STATS BAR ========== */
+  .stats-bar {
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+    display: flex; gap: 2rem; justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gray-light);
+    letter-spacing: 1px;
+  }
+
+  .stats-bar span { color: var(--gold-light); }
+
+  /* ========== GRID ========== */
+  .cars-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* ========== CARD ========== */
+  .car-card {
+    background: var(--gray);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .car-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201,150,58,0.35);
+  }
+
+  .car-img-wrap {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #1a1a1a;
+    position: relative;
+  }
+
+  .car-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+    display: block;
+  }
+
+  .car-card:hover .car-img-wrap img { transform: scale(1.05); }
+
+  .car-no-img {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--gray-light);
+    font-size: 2.5rem;
+    gap: 8px;
+  }
+
+  .car-no-img p { font-size: 0.75rem; letter-spacing: 1px; }
+
+  .car-badge {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--red);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .car-badge.sold {
+    background: var(--gray-mid);
+  }
+
+  .car-body {
+    padding: 1.1rem 1.2rem;
+  }
+
+  .car-brand {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .car-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .car-specs {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .spec-tag {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 3px;
+    padding: 3px 9px;
+    font-size: 0.72rem;
+    color: var(--gray-light);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  .car-footer {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .car-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .car-price small {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gray-light);
+    display: block;
+    letter-spacing: 0.5px;
+    font-weight: 300;
+  }
+
+  .contact-btn {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-family: 'Noto Sans Thai', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .contact-btn:hover { background: var(--red-dark); }
+
+  /* ========== MODAL ========== */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--gray);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    max-width: 640px;
+    width: 100%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-close {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none;
+    color: var(--gray-light);
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 1;
+    transition: color 0.2s;
+    line-height: 1;
+  }
+
+  .modal-close:hover { color: var(--white); }
+
+  .modal-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    display: block;
+  }
+
+  .modal-no-img {
+    width: 100%; height: 200px;
+    background: #1a1a1a;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+    color: var(--gray-mid);
+    border-radius: 8px 8px 0 0;
+  }
+
+  .modal-body {
+    padding: 1.5rem 1.8rem 2rem;
+  }
+
+  .modal-brand {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .modal-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .modal-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    margin-bottom: 1.2rem;
+  }
+
+  .modal-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .detail-item {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    padding: 10px 14px;
+  }
+
+  .detail-label {
+    font-size: 0.68rem;
+    color: var(--gray-light);
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .detail-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .modal-desc {
+    background: rgba(0,0,0,0.2);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.88rem;
+    color: var(--gray-light);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-actions {
+    display: flex; gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Noto Sans Thai', sans-serif;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+  }
+
+  .btn-primary:hover { background: var(--red-dark); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-family: 'Noto Sans Thai', sans-serif;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+  }
+
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* ========== LOADING / EMPTY ========== */
+  .loading {
+    text-align: center;
+    padding: 5rem;
+    color: var(--gray-light);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+  }
+
+  .loading-spinner {
+    width: 32px; height: 32px;
+    border: 2px solid var(--gray);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1rem;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .empty {
+    text-align: center;
+    padding: 4rem;
+    color: var(--gray-light);
+  }
+
+  .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-sub {
+    font-size: 0.8rem;
+    color: var(--gray-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links {
+    display: flex; justify-content: center; gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 600px) {
+    header { padding: 0 1rem; }
+    .header-contact { gap: 0.8rem; }
+    .hero h1 { letter-spacing: 3px; }
+    .modal-details { grid-template-columns: 1fr; }
+    .cars-grid { grid-template-columns: 1fr; padding: 0 1rem 3rem; }
+  }
+
+  /* ========== GALLERY THUMBNAILS ========== */
+  .gallery-row {
+    display: flex; gap: 8px;
+    overflow-x: auto;
+    padding: 8px 0 4px;
+    scrollbar-width: none;
+    margin-bottom: 8px;
+  }
+
+  .gallery-row::-webkit-scrollbar { display: none; }
+
+  .gallery-thumb {
+    width: 64px; height: 50px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.15s;
+  }
+
+  .gallery-thumb.active,
+  .gallery-thumb:hover { border-color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    AUTOSELECT
+  </div>
+  <div class="header-contact">
+    <a href="tel:+66" id="phone-link">📞 ติดต่อ</a>
+    <a href="https://www.facebook.com/profile.php?id=61588277913576" target="_blank" class="fb-btn">Facebook</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">SECOND HAND CARS · คัดมาเพื่อคุณ</div>
+  <h1>รถมือสอง<br><span>คุณภาพดี</span></h1>
+  <p class="hero-sub">เลือกรถดีราคาถูก มีหลายยี่ห้อให้เลือก พร้อมส่งมอบ</p>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <input type="text" id="search-input" placeholder="ค้นหายี่ห้อ รุ่น หรือรายละเอียด...">
+  <select id="brand-filter">
+    <option value="">ทุกยี่ห้อ</option>
+  </select>
+  <select id="year-filter">
+    <option value="">ทุกปี</option>
+  </select>
+  <select id="price-filter">
+    <option value="">ทุกราคา</option>
+    <option value="0-200000">ไม่เกิน 200,000</option>
+    <option value="200000-400000">200,000 – 400,000</option>
+    <option value="400000-600000">400,000 – 600,000</option>
+    <option value="600000-99999999">มากกว่า 600,000</option>
+  </select>
+  <button class="filter-clear" onclick="clearFilters()">ล้างตัวกรอง</button>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar" id="stats-bar">
+  <div>รถทั้งหมด: <span id="total-count">–</span> คัน</div>
+  <div>แสดงผล: <span id="show-count">–</span> คัน</div>
+</div>
+
+<!-- CARS GRID -->
+<div class="cars-grid" id="cars-grid">
+  <div class="loading" style="grid-column: 1/-1;">
+    <div class="loading-spinner"></div>
+    LOADING DATA...
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" onclick="closeModalDirect()">×</button>
+    <div id="modal-inner"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AUTOSELECT</div>
+  <div class="footer-sub">รถมือสอง คัดคุณภาพ ราคาตรงใจ</div>
+  <div class="footer-links">
+    <a href="https://www.facebook.com/profile.php?id=61588277913576" target="_blank">Facebook Page</a>
+    <a href="#cars-grid">ดูรถทั้งหมด</a>
+  </div>
+</footer>
+
+<script>
+const SHEET_ID = '1QAu5ZRZHmC0iQRVZVpuaoBdc-8vOgL9ZuwY-aJLSTAA';
+const GID = '357020190';
+const FB_URL = 'https://www.facebook.com/profile.php?id=61588277913576';
+
+let allCars = [];
+
+async function fetchCars() {
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${GID}`;
+  try {
+    const res = await fetch(url);
+    const text = await res.text();
+    const json = JSON.parse(text.substring(47, text.length - 2));
+    const rows = json.table.rows;
+    const cols = json.table.cols.map(c => c.label);
+
+    allCars = rows.map((row, idx) => {
+      const car = { id: idx };
+      cols.forEach((col, i) => {
+        const cell = row.c[i];
+        car[col] = cell ? (cell.f !== null && cell.f !== undefined ? cell.f : cell.v) : '';
+      });
+      return car;
+    }).filter(car => {
+      const vals = Object.values(car).join('');
+      return vals.trim().length > 1;
+    });
+
+    populateFilters();
+    renderCars(allCars);
+  } catch (e) {
+    document.getElementById('cars-grid').innerHTML = `
+      <div class="loading" style="grid-column:1/-1; color: #c8102e;">
+        <div style="font-size:2rem; margin-bottom:1rem;">⚠️</div>
+        <p>ไม่สามารถโหลดข้อมูลได้</p>
+        <p style="margin-top:8px; font-size:0.75rem;">กรุณา <a href="${FB_URL}" target="_blank" style="color:var(--gold)">ติดต่อทาง Facebook</a> เพื่อดูรถทั้งหมด</p>
+      </div>`;
+  }
+}
+
+function getField(car, ...keys) {
+  for (const k of keys) {
+    const found = Object.keys(car).find(ck => ck.toLowerCase().includes(k.toLowerCase()));
+    if (found && car[found] !== undefined && car[found] !== null && car[found] !== '') return String(car[found]).trim();
+  }
+  return '';
+}
+
+function parsePrice(car) {
+  const raw = getField(car, 'ราคา', 'price');
+  if (!raw) return 0;
+  return parseInt(raw.replace(/[^0-9]/g, '')) || 0;
+}
+
+function formatPrice(n) {
+  if (!n || n === 0) return 'ติดต่อสอบถาม';
+  return n.toLocaleString('th-TH') + ' บาท';
+}
+
+function getImages(car) {
+  const imgs = [];
+  Object.keys(car).forEach(k => {
+    const v = String(car[k] || '');
+    if (v.startsWith('http') && (v.includes('drive.google') || v.includes('.jpg') || v.includes('.png') || v.includes('.jpeg') || v.includes('.webp'))) {
+      let url = v;
+      const m = v.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      if (m) url = `https://drive.google.com/thumbnail?id=${m[1]}&sz=w600`;
+      imgs.push(url);
+    }
+  });
+  return imgs;
+}
+
+function populateFilters() {
+  const brands = [...new Set(allCars.map(c => getField(c, 'ยี่ห้อ', 'brand', 'ยีห้อ', 'Brand')).filter(Boolean))].sort();
+  const years = [...new Set(allCars.map(c => getField(c, 'ปี', 'year', 'Year')).filter(Boolean))].sort((a,b) => b - a);
+
+  const bs = document.getElementById('brand-filter');
+  brands.forEach(b => { const o = document.createElement('option'); o.value = b; o.text = b; bs.appendChild(o); });
+
+  const ys = document.getElementById('year-filter');
+  years.forEach(y => { const o = document.createElement('option'); o.value = y; o.text = y; ys.appendChild(o); });
+}
+
+function filterCars() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const brand = document.getElementById('brand-filter').value;
+  const year = document.getElementById('year-filter').value;
+  const price = document.getElementById('price-filter').value;
+
+  const filtered = allCars.filter(car => {
+    const text = Object.values(car).join(' ').toLowerCase();
+    if (q && !text.includes(q)) return false;
+    if (brand && getField(car, 'ยี่ห้อ', 'brand', 'ยีห้อ', 'Brand') !== brand) return false;
+    if (year && getField(car, 'ปี', 'year', 'Year') !== year) return false;
+    if (price) {
+      const [min, max] = price.split('-').map(Number);
+      const p = parsePrice(car);
+      if (p < min || p > max) return false;
+    }
+    return true;
+  });
+
+  renderCars(filtered);
+}
+
+function clearFilters() {
+  document.getElementById('search-input').value = '';
+  document.getElementById('brand-filter').value = '';
+  document.getElementById('year-filter').value = '';
+  document.getElementById('price-filter').value = '';
+  renderCars(allCars);
+}
+
+function renderCars(cars) {
+  document.getElementById('total-count').textContent = allCars.length;
+  document.getElementById('show-count').textContent = cars.length;
+
+  const grid = document.getElementById('cars-grid');
+  if (cars.length === 0) {
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">
+      <div class="empty-icon">🔍</div>
+      <p style="font-size:1rem; color:var(--gray-light);">ไม่พบรถที่ตรงกับเงื่อนไข</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = cars.map(car => {
+    const brand = getField(car, 'ยี่ห้อ', 'brand', 'ยีห้อ', 'Brand');
+    const model = getField(car, 'รุ่น', 'model', 'Model');
+    const year = getField(car, 'ปี', 'year', 'Year');
+    const km = getField(car, 'กิโล', 'km', 'เลขไมล์', 'ไมล์');
+    const color = getField(car, 'สี', 'color', 'Color');
+    const gear = getField(car, 'เกียร์', 'gear');
+    const fuel = getField(car, 'เชื้อเพลิง', 'fuel', 'น้ำมัน');
+    const priceNum = parsePrice(car);
+    const images = getImages(car);
+    const status = getField(car, 'สถานะ', 'status', 'Status');
+    const sold = status && (status.includes('ขาย') || status.toLowerCase().includes('sold'));
+
+    const imgHtml = images.length > 0
+      ? `<img src="${images[0]}" alt="${brand} ${model}" onerror="this.parentElement.innerHTML='<div class=car-no-img><span>🚗</span><p>NO IMAGE</p></div>'">`
+      : `<div class="car-no-img"><span>🚗</span><p>NO IMAGE</p></div>`;
+
+    const specs = [year, km ? km + ' km' : '', color, gear, fuel].filter(Boolean);
+
+    return `
+    <div class="car-card" onclick="openModal(${car.id})">
+      <div class="car-img-wrap">
+        ${imgHtml}
+        ${sold ? '<div class="car-badge sold">ขายแล้ว</div>' : '<div class="car-badge">มีพร้อมส่ง</div>'}
+      </div>
+      <div class="car-body">
+        <div class="car-brand">${brand || 'รถยนต์'}</div>
+        <div class="car-name">${[brand, model].filter(Boolean).join(' ') || 'รายละเอียดรถ'}</div>
+        <div class="car-specs">
+          ${specs.map(s => `<span class="spec-tag">${s}</span>`).join('')}
+        </div>
+        <div class="car-footer">
+          <div class="car-price">
+            ${priceNum ? priceNum.toLocaleString('th-TH') : '–'}
+            <small>${priceNum ? 'บาท' : 'ติดต่อสอบถาม'}</small>
+          </div>
+          <a href="${FB_URL}" target="_blank" class="contact-btn" onclick="event.stopPropagation()">สอบถาม</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openModal(id) {
+  const car = allCars.find(c => c.id === id);
+  if (!car) return;
+
+  const brand = getField(car, 'ยี่ห้อ', 'brand', 'ยีห้อ', 'Brand');
+  const model = getField(car, 'รุ่น', 'model', 'Model');
+  const year = getField(car, 'ปี', 'year', 'Year');
+  const km = getField(car, 'กิโล', 'km', 'เลขไมล์', 'ไมล์');
+  const color = getField(car, 'สี', 'color', 'Color');
+  const gear = getField(car, 'เกียร์', 'gear');
+  const fuel = getField(car, 'เชื้อเพลิง', 'fuel', 'น้ำมัน');
+  const engine = getField(car, 'เครื่องยนต์', 'engine', 'cc', 'ซีซี');
+  const priceNum = parsePrice(car);
+  const desc = getField(car, 'รายละเอียด', 'detail', 'หมายเหตุ', 'note', 'description');
+  const images = getImages(car);
+
+  const imgSection = images.length > 0
+    ? `<img src="${images[0]}" class="modal-img" id="modal-main-img" alt="${brand} ${model}" onerror="this.style.display='none'">
+       ${images.length > 1 ? `<div class="gallery-row" style="padding: 0 1rem;">
+         ${images.map((img, i) => `<img src="${img}" class="gallery-thumb ${i===0?'active':''}" onclick="switchImg('${img}', this)">`).join('')}
+       </div>` : ''}`
+    : `<div class="modal-no-img">🚗</div>`;
+
+  const details = [
+    { label: 'ยี่ห้อ', value: brand },
+    { label: 'รุ่น', value: model },
+    { label: 'ปีรถ', value: year },
+    { label: 'เลขไมล์', value: km ? km + ' km' : '' },
+    { label: 'สีรถ', value: color },
+    { label: 'เกียร์', value: gear },
+    { label: 'เชื้อเพลิง', value: fuel },
+    { label: 'เครื่องยนต์', value: engine },
+  ].filter(d => d.value);
+
+  document.getElementById('modal-inner').innerHTML = `
+    ${imgSection}
+    <div class="modal-body">
+      <div class="modal-brand">${brand || 'รถยนต์'}</div>
+      <div class="modal-name">${[brand, model].filter(Boolean).join(' ') || 'รายละเอียดรถ'}</div>
+      <div class="modal-price">${priceNum ? priceNum.toLocaleString('th-TH') + ' ฿' : 'ติดต่อสอบถามราคา'}</div>
+      <div class="modal-details">
+        ${details.map(d => `<div class="detail-item"><div class="detail-label">${d.label}</div><div class="detail-value">${d.value}</div></div>`).join('')}
+      </div>
+      ${desc ? `<div class="modal-desc">${desc}</div>` : ''}
+      <div class="modal-actions">
+        <a href="${FB_URL}" target="_blank" class="btn-primary">สอบถามผ่าน Facebook</a>
+        <a href="https://line.me/ti/p/~" target="_blank" class="btn-secondary">Line</a>
+      </div>
+    </div>`;
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function switchImg(url, el) {
+  document.getElementById('modal-main-img').src = url;
+  document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+}
+
+function closeModalDirect() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+document.getElementById('search-input').addEventListener('input', filterCars);
+document.getElementById('brand-filter').addEventListener('change', filterCars);
+document.getElementById('year-filter').addEventListener('change', filterCars);
+document.getElementById('price-filter').addEventListener('change', filterCars);
+
+fetchCars();
+</script>
+</body>
+</html>
